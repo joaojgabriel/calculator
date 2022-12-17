@@ -6,6 +6,8 @@ const divide = (a, b) => a / b;
 const display = document.querySelector("#display");
 const digits = document.querySelectorAll(".digit");
 
+let currentNumber;
+
 [...digits].forEach((digit) =>
   digit.addEventListener("click", (e) => addDigit(e.target.textContent))
 );
@@ -14,12 +16,16 @@ function addDigit(digit) {
   isNewNumber()
     ? (display.textContent = digit)
     : (display.textContent += digit);
+  storeNumber();
 }
 
 function isNewNumber() {
   return false;
 }
 
+function storeNumber() {
+  currentNumber = +display.textContent;
+}
 function operate(a, operator, b) {
   switch (operator) {
     case "add":

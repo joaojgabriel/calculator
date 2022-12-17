@@ -16,4 +16,9 @@ const numberKeys = document.querySelectorAll(".number");
   number.addEventListener("click", (e) => populateDisplay(e.target.textContent))
 );
 
+function populateDisplay(value) {
+  displayValue += value;
+  display.textContent = displayValue;
+}
+
 

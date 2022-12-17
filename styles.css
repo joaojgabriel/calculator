@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+.function,
+.number {
+  cursor: pointer;
+}
+
+#display {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 10px;
+  font-size: 22px;
+  background: black;
+  color: rgb(7, 106, 7);
+  height: 50px;
+}

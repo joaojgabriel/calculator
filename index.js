@@ -39,7 +39,7 @@ function addDigitToDisplay(e) {
   display.textContent += digit;
   numberOnDisplay = +display.textContent;
 
-  a && operator ? (b = numberOnDisplay) : (a = numberOnDisplay);
+  operator ? (b = numberOnDisplay) : (a = numberOnDisplay);
 }
 
 const functionBtns = document.querySelectorAll(".function");
@@ -63,15 +63,13 @@ function handleFunction(e) {
   if (!numberOnDisplay) return;
 
   if (thisFunction === "=") {
-    if (!b || !operator || isOperatorSelected) return;
+    if (!b || isOperatorSelected) return;
 
     let result = operate(a, operator, b);
     display.textContent = result;
-    if (result !== "ERROR") {
-      numberOnDisplay = +display.textContent;
-      a = numberOnDisplay;
-      isOperatorActive = false;
-    }
+    numberOnDisplay = +display.textContent;
+    a = numberOnDisplay;
+    isOperatorActive = false;
   } else {
     a = numberOnDisplay;
     numberOnDisplay = null;

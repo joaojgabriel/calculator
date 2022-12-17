@@ -13,17 +13,13 @@ const display = document.querySelector("#display");
 function operate(a, operator, b) {
   switch (operator) {
     case "+":
-      add(a, b);
-      break;
+      return add(a, b);
     case "-":
-      subtract;
-      break;
+      return subtract(a, b);
     case "*":
-      multiply;
-      break;
+      return multiply(a, b);
     case "/":
-      divide;
-      break;
+      return divide(a, b);
     default:
       console.warning("Invalid operator " + operator);
   }

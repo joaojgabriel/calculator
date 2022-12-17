@@ -48,6 +48,7 @@ function handleFunction(e) {
   let button = e.target.textContent;
   if (button === "AC") {
     displayValue = "";
+    display.textContent = displayValue;
     a = null;
     b = null;
     return;
@@ -64,4 +65,5 @@ function handleFunction(e) {
   } else {
     operator = button;
   }
+  display.textContent = displayValue;
 }

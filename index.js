@@ -36,6 +36,12 @@ function populateDisplay(value) {
   display.textContent = displayValue;
 }
 
+const functionBtns = document.querySelectorAll(".function");
+
+[...functionBtns].forEach((button) =>
+  button.addEventListener("click", handleFunction)
+);
+
 function handleFunction(e) {
   if (!displayValue) return;
 

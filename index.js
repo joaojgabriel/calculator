@@ -36,7 +36,11 @@ const digitKeys = document.querySelectorAll(".digit");
 function addDigitToDisplay(e) {
   isOperatorSelected = false;
   let digit = e.target.textContent;
-  display.textContent += digit;
+  if (display.textContent === "ERROR") {
+    display.textContent = digit;
+  } else {
+    display.textContent += digit;
+  }
   numberOnDisplay = +display.textContent;
 
   operator ? (b = numberOnDisplay) : (a = numberOnDisplay);
@@ -51,6 +55,16 @@ const functionBtns = document.querySelectorAll(".function");
 function handleFunction(e) {
   let thisFunction = e.target.textContent;
   display.textContent = "";
+
+  if (operator === "/" && b === 0) {
+    display.textContent = "ERROR";
+    a = null;
+    operator = null;
+    b = null;
+    isOperatorSelected = false;
+    numberOnDisplay = null;
+    return;
+  }
 
   if (thisFunction === "AC") {
     a = null;

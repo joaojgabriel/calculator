@@ -11,7 +11,22 @@ let displayValue = "";
 const display = document.querySelector("#display");
 
 function operate(a, operator, b) {
-  return;
+  switch (operator) {
+    case "+":
+      add(a, b);
+      break;
+    case "-":
+      subtract;
+      break;
+    case "*":
+      multiply;
+      break;
+    case "/":
+      divide;
+      break;
+    default:
+      console.warning("Invalid operator " + operator);
+  }
 }
 
 const numberKeys = document.querySelectorAll(".number");

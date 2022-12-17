@@ -6,9 +6,11 @@ const divide = (a, b) => a / b;
 let a;
 let operator;
 let b;
+let isOperatorSelected = false;
+let isOperatorActive = false;
 
-let displayValue = "";
 const display = document.querySelector("#display");
+let numberOnDisplay;
 
 function operate(a, operator, b) {
   switch (operator) {
@@ -25,15 +27,19 @@ function operate(a, operator, b) {
   }
 }
 
-const numberKeys = document.querySelectorAll(".number");
+const digitKeys = document.querySelectorAll(".digit");
 
-[...numberKeys].forEach((number) =>
-  number.addEventListener("click", (e) => populateDisplay(e.target.textContent))
+[...digitKeys].forEach((digit) =>
+  digit.addEventListener("click", addDigitToDisplay)
 );
 
-function populateDisplay(value) {
-  displayValue += value;
-  display.textContent = displayValue;
+function addDigitToDisplay(e) {
+  isOperatorSelected = false;
+  let digit = e.target.textContent;
+  display.textContent += digit;
+  numberOnDisplay = +display.textContent;
+
+  a && operator ? (b = numberOnDisplay) : (a = numberOnDisplay);
 }
 
 const functionBtns = document.querySelectorAll(".function");
@@ -43,27 +49,35 @@ const functionBtns = document.querySelectorAll(".function");
 );
 
 function handleFunction(e) {
-  if (!displayValue) return;
+  let thisFunction = e.target.textContent;
+  display.textContent = "";
 
-  let button = e.target.textContent;
-  if (button === "AC") {
-    displayValue = "";
-    display.textContent = displayValue;
+  if (thisFunction === "AC") {
     a = null;
-    b = null;
-    return;
-  }
-
-  a ? (b = +displayValue) : (a = +displayValue);
-  displayValue = "";
-
-  if (button === "=") {
-    displayValue = operate(a, operator, b);
-    a = null;
-    b = null;
     operator = null;
-  } else {
-    operator = button;
+    b = null;
+    isOperatorSelected = false;
+    numberOnDisplay = null;
   }
-  display.textContent = displayValue;
+
+  if (!numberOnDisplay) return;
+
+  if (thisFunction === "=") {
+    if (!b || !operator || isOperatorSelected) return;
+
+    let result = operate(a, operator, b);
+    display.textContent = result;
+    if (result !== "ERROR") {
+      numberOnDisplay = +display.textContent;
+      a = numberOnDisplay;
+      isOperatorActive = false;
+    }
+  } else {
+    a = numberOnDisplay;
+    numberOnDisplay = null;
+    operator = thisFunction;
+    b = null;
+    isOperatorSelected = true;
+    isOperatorActive = true;
+  }
 }

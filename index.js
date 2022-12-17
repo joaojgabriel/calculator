@@ -3,6 +3,8 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
+const display = document.querySelector("#display");
+
 function operate(a, operator, b) {
   switch (operator) {
     case "add":
@@ -16,4 +18,8 @@ function operate(a, operator, b) {
     default:
       console.warn(`Invalid operator ${operator}`);
   }
+}
+
+function displayError() {
+  display.textContent = "ERROR";
 }

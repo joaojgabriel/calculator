@@ -51,7 +51,10 @@ function handleFunction(e) {
   displayValue = "";
 
   if (button === "=") {
-    operate(a, operator, b);
+    displayValue = operate(a, operator, b);
+    a = null;
+    b = null;
+    operator = null;
   } else {
     operator = button;
   }

@@ -3,6 +3,10 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
+let a;
+let operator;
+let b;
+
 let displayValue = "";
 const display = document.querySelector("#display");
 
@@ -21,4 +25,23 @@ function populateDisplay(value) {
   display.textContent = displayValue;
 }
 
+function handleFunction(e) {
+  if (!displayValue) return;
 
+  let button = e.target.textContent;
+  if (button === "AC") {
+    displayValue = "";
+    a = null;
+    b = null;
+    return;
+  }
+
+  a ? (b = +displayValue) : (a = +displayValue);
+  displayValue = "";
+
+  if (button === "=") {
+    operate(a, operator, b);
+  } else {
+    operator = button;
+  }
+}

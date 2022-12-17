@@ -21,7 +21,7 @@ function operate(a, operator, b) {
     case "/":
       return divide(a, b);
     default:
-      console.warning("Invalid operator " + operator);
+      console.warn("Invalid operator " + operator);
   }
 }
 

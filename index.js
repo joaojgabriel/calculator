@@ -4,6 +4,21 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 const display = document.querySelector("#display");
+const digits = document.querySelectorAll(".digit");
+
+[...digits].forEach((digit) =>
+  digit.addEventListener("click", (e) => addDigit(e.target.textContent))
+);
+
+function addDigit(digit) {
+  isNewNumber()
+    ? (display.textContent = digit)
+    : (display.textContent += digit);
+}
+
+function isNewNumber() {
+  return false;
+}
 
 function operate(a, operator, b) {
   switch (operator) {

@@ -107,7 +107,7 @@ function runEquals() {
 }
 
 function runOperator(selectedOperator) {
-  if (secondOperand) runEquals();
+  if (secondOperand ?? false) runEquals();
   preOperator = selectedOperator;
   firstOperand = currentNumber;
 }

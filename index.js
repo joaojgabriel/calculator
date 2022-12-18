@@ -32,17 +32,18 @@ function operate(a, operator, b) {
 );
 
 function addDigit(digit) {
+  setOperatorLogic();
   if (!currentNumber) {
     display.textContent = "";
   }
   display.textContent += digit;
   currentNumber = +display.textContent;
-  setOperatorLogic();
   setOperandLogic();
 }
 
 function setOperatorLogic() {
   if (preOperator) {
+    currentNumber = null;
     operator = preOperator;
     preOperator = null;
   }
@@ -108,5 +109,4 @@ function runEquals() {
 function setPreOperator(selectedOperator) {
   preOperator = selectedOperator;
   firstOperand = currentNumber;
-  currentNumber = null;
 }

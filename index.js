@@ -85,11 +85,7 @@ function resetCalculator() {
 function runEquals() {
   if (!operator) return;
 
-  if (operator === "divide" && currentNumber === 0) {
-    resetCalculator();
-    display.textContent = "ERROR";
-    return;
-  }
+  if (isError(operator === "divide" && currentNumber === 0)) return;
 
   let result;
 
@@ -101,9 +97,20 @@ function runEquals() {
     result = operate(firstOperand, operator, repeatedOperand);
   }
 
+  if (isError(result === Infinity || result === -Infinity)) return;
+
   firstOperand = result;
   currentNumber = firstOperand;
   display.textContent = currentNumber;
+}
+
+function isError(condition) {
+  if (condition) {
+    resetCalculator();
+    display.textContent = "ERROR";
+    return true;
+  }
+  return false;
 }
 
 function runOperator(selectedOperator) {

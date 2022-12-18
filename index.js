@@ -68,7 +68,7 @@ function runFunction(functionChosen) {
       runEquals();
       break;
     default:
-      setPreOperator(functionChosen);
+      runOperator(functionChosen);
   }
 }
 
@@ -106,7 +106,8 @@ function runEquals() {
   display.textContent = currentNumber;
 }
 
-function setPreOperator(selectedOperator) {
+function runOperator(selectedOperator) {
+  if (secondOperand) runEquals();
   preOperator = selectedOperator;
   firstOperand = currentNumber;
 }

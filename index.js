@@ -50,7 +50,7 @@ function setOperatorLogic() {
 }
 
 function setOperandLogic() {
-  firstOperand ?? false
+  (firstOperand ?? false) && operator
     ? (secondOperand = currentNumber)
     : (firstOperand = currentNumber);
 }

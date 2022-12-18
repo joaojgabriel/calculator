@@ -38,7 +38,7 @@ function addDigit(digit) {
   }
   display.textContent += digit;
   currentNumber = +display.textContent;
-  setOperandLogic();
+  assignToOperand(currentNumber);
 }
 
 function setOperatorLogic() {
@@ -49,10 +49,10 @@ function setOperatorLogic() {
   }
 }
 
-function setOperandLogic() {
+function assignToOperand(number) {
   (firstOperand ?? false) && operator
-    ? (secondOperand = currentNumber)
-    : (firstOperand = currentNumber);
+    ? (secondOperand = number)
+    : (firstOperand = number);
 }
 
 [...functionalBtns].forEach((functionalBtn) =>

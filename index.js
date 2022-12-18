@@ -116,5 +116,4 @@ function isError(condition) {
 function runOperator(selectedOperator) {
   if (secondOperand ?? false) runEquals();
   preOperator = selectedOperator;
-  firstOperand = currentNumber;
 }

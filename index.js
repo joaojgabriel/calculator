@@ -10,8 +10,10 @@ const functionalBtns = document.querySelectorAll(".function");
 let firstOperand = 0;
 let preOperator = "add";
 let operator;
-let secondOperand;
+let secondOperand = 0;
 let repeatedOperand;
+let decimalPoint = false;
+let isNewNumber = true;
 
 function operate(a, operator, b) {
   switch (operator) {
@@ -31,7 +33,7 @@ function operate(a, operator, b) {
 );
 
 function addDigit(digit) {
-  if (preOperator) {
+  if (isNewNumber) {
     display.textContent = "";
     setOperator();
   }
@@ -42,6 +44,7 @@ function addDigit(digit) {
 function setOperator() {
   operator = preOperator;
   preOperator = null;
+  isNewNumber = false;
 }
 
 function assignToOperand(number) {
@@ -60,17 +63,22 @@ function runFunction(functionChosen) {
     case "equals":
       runEquals();
       break;
+    case "dot":
+      runDecimalPoint();
+      break;
     default:
       runOperator(functionChosen);
   }
 }
 
 function resetCalculator() {
-  firstOperand = null;
-  preOperator = null;
+  firstOperand = 0;
+  preOperator = "add";
   operator = null;
-  secondOperand = null;
+  secondOperand = 0;
   repeatedOperand = null;
+  decimalPoint = false;
+  isNewNumber = true;
   display.textContent = "";
 }
 
@@ -127,4 +135,15 @@ function runOperator(selectedOperator) {
   !firstOperand && selectedOperator !== "subtract"
     ? (preOperator = "add")
     : (preOperator = selectedOperator);
+  isNewNumber = true;
+}
+
+function runDecimalPoint() {
+  if (decimalPoint & !isNewNumber) return;
+  if (isNewNumber) {
+    display.textContent = "0";
+    isNewNumber = false;
+  }
+  display.textContent += ".";
+  decimalPoint = true;
 }

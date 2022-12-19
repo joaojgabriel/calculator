@@ -45,6 +45,7 @@ function startNewNumber() {
   operator = preOperator;
   preOperator = null;
   isNewNumber = false;
+  decimalPoint = false;
 }
 
 function assignToOperand(number) {

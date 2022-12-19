@@ -89,7 +89,7 @@ function runEquals() {
     result = operate(firstOperand, operator, repeatedOperand);
   }
 
-  if (isError(result === Infinity || result === -Infinity)) return;
+  if (isError(!result.isFinite())) return;
 
   firstOperand = result;
   display.textContent = firstOperand;

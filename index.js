@@ -7,9 +7,8 @@ const display = document.querySelector("#display");
 const digitBtns = document.querySelectorAll(".digit");
 const functionalBtns = document.querySelectorAll(".function");
 
-let currentNumber;
-let firstOperand;
-let preOperator;
+let firstOperand = 0;
+let preOperator = "add";
 let operator;
 let secondOperand;
 let repeatedOperand;
@@ -32,27 +31,21 @@ function operate(a, operator, b) {
 );
 
 function addDigit(digit) {
-  setOperatorLogic();
-  if (!currentNumber) {
+  if (preOperator) {
     display.textContent = "";
+    setOperatorLogic();
   }
   display.textContent += digit;
-  currentNumber = +display.textContent;
-  assignToOperand(currentNumber);
+  assignToOperand(+display.textContent);
 }
 
 function setOperatorLogic() {
-  if (preOperator) {
-    currentNumber = null;
-    operator = preOperator;
-    preOperator = null;
-  }
+  operator = preOperator;
+  preOperator = null;
 }
 
 function assignToOperand(number) {
-  (firstOperand ?? false) && operator
-    ? (secondOperand = number)
-    : (firstOperand = number);
+  operator ? (secondOperand = number) : (firstOperand = number);
 }
 
 [...functionalBtns].forEach((functionalBtn) =>
@@ -78,14 +71,13 @@ function resetCalculator() {
   operator = null;
   secondOperand = null;
   repeatedOperand = null;
-  currentNumber = null;
   display.textContent = "";
 }
 
 function runEquals() {
   if (!operator) return;
 
-  if (isError(operator === "divide" && currentNumber === 0)) return;
+  if (isError(operator === "divide" && secondOperand === 0)) return;
 
   let result;
 
@@ -100,8 +92,7 @@ function runEquals() {
   if (isError(result === Infinity || result === -Infinity)) return;
 
   firstOperand = result;
-  currentNumber = firstOperand;
-  display.textContent = currentNumber;
+  display.textContent = firstOperand;
 }
 
 function isError(condition) {
@@ -115,5 +106,7 @@ function isError(condition) {
 
 function runOperator(selectedOperator) {
   if (secondOperand ?? false) runEquals();
-  preOperator = selectedOperator;
+  !firstOperand && selectedOperator !== "subtract"
+    ? (preOperator = "add")
+    : (preOperator = selectedOperator);
 }

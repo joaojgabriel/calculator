@@ -33,13 +33,13 @@ function operate(a, operator, b) {
 function addDigit(digit) {
   if (preOperator) {
     display.textContent = "";
-    setOperatorLogic();
+    setOperator();
   }
   display.textContent += digit;
   assignToOperand(+display.textContent);
 }
 
-function setOperatorLogic() {
+function setOperator() {
   operator = preOperator;
   preOperator = null;
 }

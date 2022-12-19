@@ -89,7 +89,7 @@ function runEquals() {
     result = operate(firstOperand, operator, repeatedOperand);
   }
 
-  if (isError(!result.isFinite())) return;
+  if (isError(!Number.isFinite(result))) return;
 
   firstOperand = result;
   display.textContent = firstOperand;

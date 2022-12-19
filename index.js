@@ -92,7 +92,25 @@ function runEquals() {
   if (isError(!Number.isFinite(result))) return;
 
   firstOperand = result;
-  display.textContent = firstOperand;
+  display.textContent = formatResult(result);
+}
+
+function formatResult(result) {
+  let resultString = result.toString();
+  let resultLength = resultString.length;
+
+  if (resultLength > 7) {
+    result = +result.toPrecision(7);
+  }
+
+  if (!Number.isInteger(result)) {
+    let decimalPlaces = +resultString.split(".")[1].length;
+    if (decimalPlaces > 6) {
+      result = result.toFixed(6);
+    }
+  }
+
+  return result;
 }
 
 function isError(condition) {

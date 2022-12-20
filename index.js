@@ -15,7 +15,7 @@ let repeatedOperand;
 let decimalPoint = false;
 let isNewNumber = true;
 
-function operate(a, operator, b) {
+function operateIntegers(a, operator, b) {
   switch (operator) {
     case "add":
       return add(a, b);
@@ -91,11 +91,15 @@ function runEquals() {
   let result;
 
   if (secondOperand ?? false) {
-    result = operate(firstOperand, operator, secondOperand);
+    if (Number.isInteger(firstOperand) && Number.isInteger(secondOperand)) {
+      result = operateIntegers(firstOperand, operator, secondOperand);
+    }
     repeatedOperand = secondOperand;
     secondOperand = null;
   } else {
-    result = operate(firstOperand, operator, repeatedOperand);
+    if (Number.isInteger(firstOperand) && Number.isInteger(repeatedOperand)) {
+      result = operateIntegers(firstOperand, operator, repeatedOperand);
+    }
   }
 
   if (isError(!Number.isFinite(result))) return;

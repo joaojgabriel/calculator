@@ -1,10 +1,48 @@
+:root {
+  --gray-01: #fcfcfc;
+  --gray-02: #f9f9f9;
+  --gray-03: #f6f6f6;
+  --gray-04: #f3f3f3;
+  --gray-05: #f0f0f0;
+  --gray-10: #e6e6e6;
+  --gray-20: #c9c9c9;
+  --gray-30: #adadad;
+  --gray-40: #919191;
+  --gray-50: #757575;
+  --gray-60: #5c5c5c;
+  --gray-70: #454545;
+  --gray-80: #2e2e2e;
+  --gray-90: #1b1b1b;
+}
+
 * {
   box-sizing: border-box;
+}
+
+body {
+  background-color: var(--gray-80);
 }
 
 .function,
 .digit {
   cursor: pointer;
+}
+
+#calculator {
+  background-color: var(--gray-50);
+}
+
+button {
+  color: var(--gray-10);
+  border: none;
+}
+
+.digit {
+  background-color: var(--gray-60);
+}
+
+.function {
+  background-color: var(--gray-70);
 }
 
 #display {
@@ -13,7 +51,7 @@
   padding-left: 10px;
   border-radius: 10px;
   font-size: 22px;
-  background: black;
+  background-color: var(--gray-90);
   color: rgb(7, 106, 7);
   height: 50px;
   width: 100%;

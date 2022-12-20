@@ -28,6 +28,8 @@ function operateIntegers(a, operator, b) {
   }
 }
 
+function operateFloats(a, operator, b) {}
+
 [...digitBtns].forEach((digit) =>
   digit.addEventListener("click", (e) => addDigit(e.target.textContent))
 );
@@ -91,15 +93,16 @@ function runEquals() {
   let result;
 
   if (secondOperand ?? false) {
-    if (Number.isInteger(firstOperand) && Number.isInteger(secondOperand)) {
-      result = operateIntegers(firstOperand, operator, secondOperand);
-    }
+    Number.isInteger(firstOperand) && Number.isInteger(secondOperand)
+      ? (result = operateIntegers(firstOperand, operator, secondOperand))
+      : (result = operateFloats(firstOperand, operator, secondOperand));
+
     repeatedOperand = secondOperand;
     secondOperand = null;
   } else {
-    if (Number.isInteger(firstOperand) && Number.isInteger(repeatedOperand)) {
-      result = operateIntegers(firstOperand, operator, repeatedOperand);
-    }
+    Number.isInteger(firstOperand) && Number.isInteger(repeatedOperand)
+      ? (result = operateIntegers(firstOperand, operator, repeatedOperand))
+      : (result = operateFloats(firstOperand, operator, repeatedOperand));
   }
 
   if (isError(!Number.isFinite(result))) return;

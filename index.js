@@ -89,7 +89,7 @@ function runEquals() {
   if (isError(operator === "divide" && secondOperand === 0)) return;
 
   let result;
-  
+
   if (secondOperand ?? false) {
     result = operate(firstOperand, operator, secondOperand);
     repeatedOperand = secondOperand;
@@ -105,7 +105,9 @@ function runEquals() {
 }
 
 function getNumberOfDecimals(number) {
-  return +number.split(".")[1].length;
+  numberString = number.toString();
+  if (!numberString.includes(".")) return 0;
+  return +numberString.split(".")[1].length;
 }
 
 function formatResult(result) {

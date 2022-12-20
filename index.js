@@ -25,35 +25,49 @@ function operateIntegers(a, operator, b) {
       return multiply(a, b);
     case "divide":
       return divide(a, b);
-    default:
-      console.warn("Invalid operator");
   }
 }
 
 function operateFloats(a, operator, b) {
+  if (a === 0 || b === 0) {
+    return operateIntegers(a, operator, b);
+  }
+
   let aDecimals = getNumberOfDecimals(a);
   let bDecimals = getNumberOfDecimals(b);
-  let maxDecimals = Math.max(aDecimals, bDecimals);
   let decimalOffset;
 
-  if (operator === "add" || operator === "subtract") {
+  if (operator === "multiply") {
+    let sumOfDecimals = aDecimals + bDecimals;
+    decimalOffset = Math.pow(10, sumOfDecimals);
+
+    let aDecimalOffset = Math.pow(10, aDecimals);
+    let bDecimalOffset = Math.pow(10, bDecimals);
+    a *= aDecimalOffset;
+    b *= bDecimalOffset;
+  } else {
+    let maxDecimals = Math.max(aDecimals, bDecimals);
     decimalOffset = Math.pow(10, maxDecimals);
+
     a *= decimalOffset;
     b *= decimalOffset;
   }
 
   switch (operator) {
     case "add":
-      return add(a, b) / decimalOffset;
+      a = add(a, b);
+      break;
     case "subtract":
-      return subtract(a, b) / decimalOffset;
+      a = subtract(a, b);
+      break;
     case "multiply":
-      return multiply(a, b);
-    case "divide":
-      return divide(a, b);
-    default:
-      console.warn("Invalid operator");
+      a = multiply(a, b);
   }
+
+  if (!(operator === "divide")) {
+    b = decimalOffset;
+  }
+  return divide(a, b);
 }
 
 [...digitBtns].forEach((digit) =>

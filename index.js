@@ -31,17 +31,22 @@ function operateIntegers(a, operator, b) {
 }
 
 function operateFloats(a, operator, b) {
+  let aDecimals = getNumberOfDecimals(a);
+  let bDecimals = getNumberOfDecimals(b);
+  let maxDecimals = Math.max(aDecimals, bDecimals);
+  let decimalOffset;
+
+  if (operator === "add" || operator === "subtract") {
+    decimalOffset = Math.pow(10, maxDecimals);
+    a *= decimalOffset;
+    b *= decimalOffset;
+  }
+
   switch (operator) {
     case "add":
-      let aDecimals = getNumberOfDecimals(a);
-      let bDecimals = getNumberOfDecimals(b);
-      let maxDecimals = Math.max(aDecimals, bDecimals);
-      let decimalOffset = Math.pow(10, maxDecimals);
-      a = a * decimalOffset;
-      b = b * decimalOffset;
       return add(a, b) / decimalOffset;
     case "subtract":
-      return subtract(a, b);
+      return subtract(a, b) / decimalOffset;
     case "multiply":
       return multiply(a, b);
     case "divide":

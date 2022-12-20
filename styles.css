@@ -23,6 +23,13 @@ body {
   background-color: var(--gray-80);
 }
 
+main {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
 .function,
 .digit {
   cursor: pointer;
@@ -32,8 +39,9 @@ body {
   background-color: var(--gray-70);
   border: 1.5px solid var(--gray-60);
   border-radius: 10px;
-  max-height: 95vh;
   aspect-ratio: 3/4;
+  width: 80%;
+  max-width: 250px;
 }
 
 button {

@@ -25,10 +25,31 @@ function operateIntegers(a, operator, b) {
       return multiply(a, b);
     case "divide":
       return divide(a, b);
+    default:
+      console.warn("Invalid operator");
   }
 }
 
-function operateFloats(a, operator, b) {}
+function operateFloats(a, operator, b) {
+  switch (operator) {
+    case "add":
+      let aDecimals = getNumberOfDecimals(a);
+      let bDecimals = getNumberOfDecimals(b);
+      let maxDecimals = Math.max(aDecimals, bDecimals);
+      let decimalOffset = Math.pow(10, maxDecimals);
+      a = a * decimalOffset;
+      b = b * decimalOffset;
+      return add(a, b) / decimalOffset;
+    case "subtract":
+      return subtract(a, b);
+    case "multiply":
+      return multiply(a, b);
+    case "divide":
+      return divide(a, b);
+    default:
+      console.warn("Invalid operator");
+  }
+}
 
 [...digitBtns].forEach((digit) =>
   digit.addEventListener("click", (e) => addDigit(e.target.textContent))

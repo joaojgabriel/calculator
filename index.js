@@ -131,7 +131,7 @@ function addDigit(digit) {
 }
 
 function removeDigit() {
-  if (isAfterEquals()) resetCalculator();
+  if (isAfterEquals()) return;
   if (output.textContent === "") return;
   if (output.textContent[output.textContent.length - 1] === ".") {
     decimalPoint = false;

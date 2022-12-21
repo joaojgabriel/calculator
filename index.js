@@ -249,7 +249,7 @@ function isError(condition) {
 }
 
 function runOperator(selectedOperator) {
-  if (secondOperand ?? false) runEquals();
+  if (!Number.isNaN(secondOperand)) runEquals();
   preOperator = selectedOperator;
   highlightPreOperator(preOperator);
   isNewNumber = true;

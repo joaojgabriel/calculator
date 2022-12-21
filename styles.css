@@ -46,7 +46,7 @@ main {
   border-radius: calc(var(--radius) + var(--space));
   aspect-ratio: 3/4;
   width: 80%;
-  max-width: 250px;
+  max-width: 300px;
 }
 
 #clear {
@@ -83,10 +83,10 @@ button {
   align-items: center;
   padding-left: 10px;
   border-radius: var(--radius);
-  font-size: 22px;
+  font-size: 25px;
   background-color: var(--gray-90);
   color: var(--gray-20);
-  height: 50px;
+  height: 65px;
   width: 100%;
   overflow: scroll;
 }
@@ -130,4 +130,3 @@ button {
 #right > * {
   flex: 1;
 }
-

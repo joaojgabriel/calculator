@@ -73,6 +73,7 @@ main {
 
 #equals {
   border-bottom-right-radius: var(--radius);
+  background-color: var(--gray-90);
 }
 
 #zero {

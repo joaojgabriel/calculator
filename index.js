@@ -142,7 +142,7 @@ function removeDigit() {
 }
 
 function isAfterEquals() {
-  return !!(secondOperand || secondOperand === 0) && !preOperator;
+  return secondOperand === null && !preOperator;
 }
 
 function startNewNumber() {
@@ -187,6 +187,7 @@ function resetCalculator() {
   repeatedOperand = null;
   decimalPoint = false;
   isNewNumber = true;
+  removeHighlight();
   output.textContent = "";
 }
 

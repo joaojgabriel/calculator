@@ -121,7 +121,6 @@ function operateFloats(a, operator, b) {
 );
 
 function addDigit(digit) {
-  if (isAfterEquals()) resetCalculator();
   if (isNewNumber) {
     output.textContent = "";
     startNewNumber();
@@ -131,7 +130,6 @@ function addDigit(digit) {
 }
 
 function removeDigit() {
-  if (isAfterEquals()) return;
   if (output.textContent === "") return;
   if (output.textContent[output.textContent.length - 1] === ".") {
     decimalPoint = false;
@@ -139,9 +137,7 @@ function removeDigit() {
   output.textContent = output.textContent.slice(0, -1);
   assignToOperand(+output.textContent);
 }
-function isAfterEquals() {
-  return secondOperand || (secondOperand === 0 && !preOperator);
-}
+
 function startNewNumber() {
   operator = preOperator;
   preOperator = null;

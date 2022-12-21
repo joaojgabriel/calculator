@@ -36,6 +36,8 @@ main {
 }
 
 #calculator {
+  display: flex;
+  flex-direction: column;
   background-color: var(--gray-70);
   border: 1.5px solid var(--gray-60);
   border-radius: 10px;
@@ -69,4 +71,37 @@ button {
   height: 50px;
   width: 100%;
   overflow: scroll;
+}
+
+#buttons {
+  flex: 1;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+#top {
+  display: flex;
+  grid-column: 1 / 5;
+  grid-row: 1;
+}
+
+#top > * {
+  flex: 1;
+}
+
+#digits {
+  grid-column: 1 / 4;
+  grid-row: 2;
+}
+
+#right {
+  display: flex;
+  flex-direction: column;
+  grid-row: 2 / 5;
+}
+
+#right > * {
+  flex: 1;
 }

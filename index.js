@@ -196,13 +196,9 @@ function runEquals() {
     Number.isInteger(firstOperand) && Number.isInteger(secondOperand)
       ? (result = operateIntegers(firstOperand, operator, secondOperand))
       : (result = operateFloats(firstOperand, operator, secondOperand));
-
-    repeatedOperand = secondOperand;
     secondOperand = null;
   } else {
-    Number.isInteger(firstOperand) && Number.isInteger(repeatedOperand)
-      ? (result = operateIntegers(firstOperand, operator, repeatedOperand))
-      : (result = operateFloats(firstOperand, operator, repeatedOperand));
+    return;
   }
 
   if (isError(!Number.isFinite(result))) return;

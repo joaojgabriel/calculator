@@ -19,6 +19,11 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Digital";
+  src: url("./digital-7.ttf");
+}
+
 body {
   background-color: var(--gray-80);
 }
@@ -88,11 +93,12 @@ button {
 }
 
 #display {
+  font-family: Digital, Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
   padding-left: 10px;
   border-radius: var(--radius);
-  font-size: 25px;
+  font-size: 45px;
   background-color: var(--gray-90);
   color: var(--gray-20);
   height: 65px;

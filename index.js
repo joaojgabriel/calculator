@@ -140,7 +140,7 @@ function removeDigit() {
   assignToOperand(+output.textContent);
 }
 function isAfterEquals() {
-  return !secondOperand && secondOperand !== 0 && !preOperator;
+  return Number.isNaN(secondOperand) && !preOperator;
 }
 function startNewNumber() {
   operator = preOperator;
@@ -195,7 +195,7 @@ function runEquals() {
 
   let result;
 
-  if (secondOperand ?? false) {
+  if (!Number.isNaN(secondOperand)) {
     Number.isInteger(firstOperand) && Number.isInteger(secondOperand)
       ? (result = operateIntegers(firstOperand, operator, secondOperand))
       : (result = operateFloats(firstOperand, operator, secondOperand));

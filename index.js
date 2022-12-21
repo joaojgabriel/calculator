@@ -16,6 +16,47 @@ let repeatedOperand;
 let decimalPoint = false;
 let isNewNumber = true;
 
+addEventListener("keydown", (e) => {
+  if (e.key === "/") e.preventDefault();
+});
+addEventListener("keyup", handleKey);
+
+function handleKey(e) {
+  if (Number.isInteger(+e.key)) addDigit(e.key);
+  switch (e.key) {
+    case "Delete":
+      runFunction("clear");
+      break;
+    case "/":
+      runFunction("divide");
+      break;
+    case "*":
+      runFunction("multiply");
+      break;
+    case "-":
+      runFunction("subtract");
+      break;
+    case "Backspace":
+      runFunction("backspace");
+      break;
+    case "+":
+      runFunction("add");
+      break;
+    case ".":
+      runFunction("dot");
+      break;
+    case "Enter":
+      runFunction("equals");
+      break;
+    case ",":
+      runFunction("dot");
+      break;
+    case "Escape":
+      runFunction("clear");
+      break;
+  }
+}
+
 function operateIntegers(a, operator, b) {
   switch (operator) {
     case "add":
@@ -87,6 +128,15 @@ function addDigit(digit) {
   assignToOperand(+output.textContent);
 }
 
+function removeDigit() {
+  if (!(secondOperand ?? false) & !preOperator)
+    // After running equals
+    return;
+  if (output.textContent === "") return;
+  output.textContent = output.textContent.slice(0, -1);
+  assignToOperand(+output.textContent);
+}
+
 function startNewNumber() {
   operator = preOperator;
   preOperator = null;
@@ -112,6 +162,9 @@ function runFunction(functionChosen) {
       break;
     case "dot":
       runDecimalPoint();
+      break;
+    case "backspace":
+      removeDigit();
       break;
     default:
       runOperator(functionChosen);
@@ -176,7 +229,7 @@ function getNumberOfDecimals(number) {
 function formatResult(result) {
   let resultString = result.toString();
   let resultLength = resultString.length;
-  if (resultLength > 14) {
+  if (resultLength > 11) {
     result = result.toExponential(2);
   }
 

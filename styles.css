@@ -68,4 +68,5 @@ button {
   color: var(--gray-20);
   height: 50px;
   width: 100%;
+  overflow: scroll;
 }

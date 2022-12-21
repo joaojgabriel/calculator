@@ -4,6 +4,7 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 const display = document.querySelector("#display");
+const output = document.querySelector("#output");
 const digitBtns = document.querySelectorAll(".digit");
 const functionalBtns = document.querySelectorAll(".function");
 
@@ -75,16 +76,15 @@ function operateFloats(a, operator, b) {
 );
 
 function addDigit(digit) {
-  if (isError(display.textContent.length === 15)) return;
   if (!(secondOperand ?? false) & !preOperator)
     // After running equals
     return;
   if (isNewNumber) {
-    display.textContent = "";
+    output.textContent = "";
     startNewNumber();
   }
-  display.textContent += digit;
-  assignToOperand(+display.textContent);
+  output.textContent += digit;
+  assignToOperand(+output.textContent);
 }
 
 function startNewNumber() {
@@ -126,7 +126,7 @@ function resetCalculator() {
   repeatedOperand = null;
   decimalPoint = false;
   isNewNumber = true;
-  display.textContent = "";
+  output.textContent = "";
 }
 
 function runEquals() {
@@ -153,7 +153,18 @@ function runEquals() {
 
   firstOperand = result;
   isNewNumber = true;
-  display.textContent = formatResult(result);
+  output.textContent = formatResult(result);
+  isError(isOverflowing());
+}
+
+function isOverflowing() {
+  return (
+    +document.defaultView.getComputedStyle(output).width.slice(0, -2) +
+      +document.defaultView
+        .getComputedStyle(display)
+        ["padding-left"].slice(0, -2) >
+    +document.defaultView.getComputedStyle(display).width.slice(0, -2)
+  );
 }
 
 function getNumberOfDecimals(number) {
@@ -175,7 +186,7 @@ function formatResult(result) {
 function isError(condition) {
   if (condition) {
     resetCalculator();
-    display.textContent = "ERROR";
+    output.textContent = "ERROR";
     return true;
   }
   return false;
@@ -192,9 +203,9 @@ function runOperator(selectedOperator) {
 function runDecimalPoint() {
   if (decimalPoint & !isNewNumber) return;
   if (isNewNumber) {
-    display.textContent = "0";
+    output.textContent = "0";
     isNewNumber = false;
   }
-  display.textContent += ".";
+  output.textContent += ".";
   decimalPoint = true;
 }

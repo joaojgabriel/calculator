@@ -11,7 +11,7 @@ const functionalBtns = document.querySelectorAll(".function");
 let firstOperand = 0;
 let preOperator = "add";
 let operator;
-let secondOperand = 0;
+let secondOperand;
 let repeatedOperand;
 let decimalPoint = false;
 let isNewNumber = true;
@@ -110,7 +110,7 @@ function operateFloats(a, operator, b) {
       a = multiply(a, b);
   }
 
-  if (!(operator === "divide")) {
+  if (operator !== "divide") {
     b = decimalOffset;
   }
   return divide(a, b);
@@ -121,9 +121,7 @@ function operateFloats(a, operator, b) {
 );
 
 function addDigit(digit) {
-  if (!(secondOperand ?? false) & !preOperator)
-    // After running equals
-    return;
+  if (isAfterEquals()) return;
   if (isNewNumber) {
     output.textContent = "";
     startNewNumber();
@@ -133,15 +131,18 @@ function addDigit(digit) {
 }
 
 function removeDigit() {
-  if (!(secondOperand ?? false) & !preOperator)
-    // After running equals
-    return;
-  if (output.textContent === "") return;
-  if (output.textContent[output.textContent.length - 1] === ".") {
+  if (isAfterEquals()) return;
+  let displayed = output.textContent;
+  if (displayed === "") return;
+  if (displayed[displayed.length - 1] === ".") {
     decimalPoint = false;
   }
-  output.textContent = output.textContent.slice(0, -1);
-  assignToOperand(+output.textContent);
+  displayed = displayed.slice(0, -1);
+  assignToOperand(+displayed);
+}
+
+function isAfterEquals() {
+  return !!(secondOperand || secondOperand === 0) && !preOperator;
 }
 
 function startNewNumber() {
@@ -196,7 +197,7 @@ function runEquals() {
 
   let result;
 
-  if (secondOperand ?? false) {
+  if (secondOperand || secondOperand === 0) {
     Number.isInteger(firstOperand) && Number.isInteger(secondOperand)
       ? (result = operateIntegers(firstOperand, operator, secondOperand))
       : (result = operateFloats(firstOperand, operator, secondOperand));
@@ -250,18 +251,16 @@ function isError(condition) {
 }
 
 function runOperator(selectedOperator) {
-  if (secondOperand ?? false) runEquals();
-  !firstOperand & (selectedOperator !== "subtract")
-    ? (preOperator = "add")
-    : (preOperator = selectedOperator);
-  highlightPreOperator(preOperator);
+  if (secondOperand || secondOperand === 0) runEquals();
+  preOperator = selectedOperator;
+  highlightPreOperator(selectedOperator);
   isNewNumber = true;
 }
 
-function highlightPreOperator(preOperator) {
+function highlightPreOperator(highlighted) {
   removeHighlight();
 
-  document.querySelector(`#${preOperator}`).classList.add("active-operator");
+  document.querySelector(`#${highlighted}`).classList.add("active-operator");
 }
 
 function removeHighlight() {
@@ -272,7 +271,7 @@ function removeHighlight() {
 }
 
 function runDecimalPoint() {
-  if (decimalPoint & !isNewNumber) return;
+  if (decimalPoint && !isNewNumber) return;
   if (isNewNumber) {
     output.textContent = "0";
     isNewNumber = false;

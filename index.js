@@ -214,13 +214,19 @@ function runEquals() {
 }
 
 function isOverflowing() {
-  return (
-    +document.defaultView.getComputedStyle(output).width.slice(0, -2) +
-      +document.defaultView
-        .getComputedStyle(display)
-        ["padding-left"].slice(0, -2) >
-    +document.defaultView.getComputedStyle(display).width.slice(0, -2)
-  );
+  let outputWidth = +document.defaultView
+    .getComputedStyle(output)
+    .width.slice(0, -2);
+
+  let outputToDisplay = +document.defaultView
+    .getComputedStyle(display)
+    ["padding-left"].slice(0, -2);
+
+  let displayWidth = +document.defaultView
+    .getComputedStyle(display)
+    .width.slice(0, -2);
+
+  return outputWidth + outputToDisplay > displayWidth;
 }
 
 function getNumberOfDecimals(number) {

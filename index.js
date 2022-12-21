@@ -121,7 +121,9 @@ function operateFloats(a, operator, b) {
 );
 
 function addDigit(digit) {
-  if (isAfterEquals()) return;
+  if (+output.textContent === 0 || isAfterEquals()) {
+    resetCalculator();
+  }
   if (isNewNumber) {
     output.textContent = "";
     startNewNumber();

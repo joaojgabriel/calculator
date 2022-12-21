@@ -8,6 +8,8 @@
   --gray-20: #c9c9c9;
   --gray-30: #adadad;
   --gray-40: #919191;
+  --blue-40v: #2491ff;
+  --orange-warm-40v: #ff580a;
   --gray-50: #757575;
   --gray-60: #5c5c5c;
   --gray-70: #454545;
@@ -65,8 +67,8 @@ main {
 
 #clear {
   border-top-left-radius: var(--radius);
-  color: var(--gray-90);
-  background-color: var(--gray-30);
+  color: var(--gray-05);
+  background-color: var(--blue-40v);
 }
 
 #subtract {
@@ -75,8 +77,8 @@ main {
 
 #equals {
   border-bottom-right-radius: var(--radius);
-  color: var(--gray-90);
-  background-color: var(--gray-20);
+  color: var(--gray-10);
+  background-color: var(--orange-warm-40v);
 }
 
 #zero {

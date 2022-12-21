@@ -250,9 +250,7 @@ function isError(condition) {
 
 function runOperator(selectedOperator) {
   if (secondOperand ?? false) runEquals();
-  !firstOperand & (selectedOperator !== "subtract")
-    ? (preOperator = "add")
-    : (preOperator = selectedOperator);
+  preOperator = selectedOperator;
   highlightPreOperator(preOperator);
   isNewNumber = true;
 }

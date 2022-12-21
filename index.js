@@ -17,7 +17,7 @@ let decimalPoint = false;
 let isNewNumber = true;
 
 addEventListener("keydown", (e) => {
-  if (e.key === "/") e.preventDefault();
+  if (e.key === "/" || e.key === "Backspace") e.preventDefault();
 });
 addEventListener("keyup", handleKey);
 

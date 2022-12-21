@@ -200,7 +200,7 @@ function runEquals() {
 
   let result;
 
-  if (secondOperand || secondOperand === 0) {
+  if (!Number.isNaN(secondOperand)) {
     Number.isInteger(firstOperand) && Number.isInteger(secondOperand)
       ? (result = operateIntegers(firstOperand, operator, secondOperand))
       : (result = operateFloats(firstOperand, operator, secondOperand));
@@ -254,7 +254,7 @@ function isError(condition) {
 }
 
 function runOperator(selectedOperator) {
-  if (secondOperand || secondOperand === 0) runEquals();
+  if (!Number.isNaN(secondOperand)) runEquals();
   preOperator = selectedOperator;
   highlightPreOperator(selectedOperator);
   isNewNumber = true;

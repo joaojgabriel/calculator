@@ -134,7 +134,12 @@ button {
 }
 
 #zero {
-  grid-column: 1 / span 3;
+  grid-column: span 2;
+}
+
+#dot {
+  background-color: var(--gray-60);
+  border-color: var(--gray-80);
 }
 
 #right {
@@ -145,4 +150,12 @@ button {
 
 #right > * {
   flex: 1;
+}
+
+#add {
+  flex: 1;
+}
+
+#equals {
+  flex: 2;
 }

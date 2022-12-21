@@ -255,7 +255,7 @@ function isError(condition) {
 }
 
 function runOperator(selectedOperator) {
-  if (!secondOperand || secondOperand === 0) runEquals();
+  if (secondOperand || secondOperand === 0) runEquals();
   preOperator = selectedOperator;
   highlightPreOperator(preOperator);
   isNewNumber = true;

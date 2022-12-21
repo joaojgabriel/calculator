@@ -8,10 +8,10 @@ const output = document.querySelector("#output");
 const digitBtns = document.querySelectorAll(".digit");
 const functionalBtns = document.querySelectorAll(".function");
 
-let firstOperand = 0;
-let preOperator = "add";
+let firstOperand;
+let preOperator;
 let operator;
-let secondOperand = 0;
+let secondOperand;
 let repeatedOperand;
 let decimalPoint = false;
 let isNewNumber = true;
@@ -140,7 +140,7 @@ function removeDigit() {
   assignToOperand(+output.textContent);
 }
 function isAfterEquals() {
-  return Number.isNaN(secondOperand) && !preOperator;
+  return secondOperand || (secondOperand === 0 && !preOperator);
 }
 function startNewNumber() {
   operator = preOperator;
@@ -177,10 +177,10 @@ function runFunction(functionChosen) {
 }
 
 function resetCalculator() {
-  firstOperand = 0;
-  preOperator = "add";
+  firstOperand = null;
+  preOperator = null;
   operator = null;
-  secondOperand = 0;
+  secondOperand = null;
   repeatedOperand = null;
   decimalPoint = false;
   isNewNumber = true;
@@ -195,7 +195,7 @@ function runEquals() {
 
   let result;
 
-  if (!Number.isNaN(secondOperand)) {
+  if (secondOperand || secondOperand === 0) {
     Number.isInteger(firstOperand) && Number.isInteger(secondOperand)
       ? (result = operateIntegers(firstOperand, operator, secondOperand))
       : (result = operateFloats(firstOperand, operator, secondOperand));
@@ -255,7 +255,7 @@ function isError(condition) {
 }
 
 function runOperator(selectedOperator) {
-  if (!Number.isNaN(secondOperand)) runEquals();
+  if (!secondOperand || secondOperand === 0) runEquals();
   preOperator = selectedOperator;
   highlightPreOperator(preOperator);
   isNewNumber = true;

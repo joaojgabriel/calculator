@@ -78,7 +78,6 @@ main {
 
 #equals {
   border-bottom-right-radius: var(--radius);
-  color: var(--gray-10);
   background-color: var(--orange-warm-40v);
 }
 
@@ -168,4 +167,8 @@ button {
 
 #equals {
   flex: 2;
+}
+
+.active-operator {
+  background-color: var(--orange-warm-40v);
 }

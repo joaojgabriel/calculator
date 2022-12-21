@@ -206,6 +206,7 @@ function runEquals() {
 
   firstOperand = result;
   isNewNumber = true;
+  removeHighlight();
   output.textContent = formatResult(result);
   isError(isOverflowing());
 }
@@ -247,10 +248,24 @@ function isError(condition) {
 
 function runOperator(selectedOperator) {
   if (secondOperand ?? false) runEquals();
-  !firstOperand && selectedOperator !== "subtract"
+  !firstOperand & (selectedOperator !== "subtract")
     ? (preOperator = "add")
     : (preOperator = selectedOperator);
+  highlightPreOperator(preOperator);
   isNewNumber = true;
+}
+
+function highlightPreOperator(preOperator) {
+  removeHighlight();
+
+  document.querySelector(`#${preOperator}`).classList.add("active-operator");
+}
+
+function removeHighlight() {
+  document.querySelector("#add").classList.remove("active-operator");
+  document.querySelector("#subtract").classList.remove("active-operator");
+  document.querySelector("#multiply").classList.remove("active-operator");
+  document.querySelector("#divide").classList.remove("active-operator");
 }
 
 function runDecimalPoint() {

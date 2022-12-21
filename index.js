@@ -17,7 +17,8 @@ let decimalPoint = false;
 let isNewNumber = true;
 
 addEventListener("keydown", (e) => {
-  if (e.key === "/" || e.key === "Backspace") e.preventDefault();
+  if (e.key === "/" || e.key === "Backspace" || e.key === "F5")
+    e.preventDefault();
 });
 addEventListener("keyup", handleKey);
 
@@ -25,6 +26,9 @@ function handleKey(e) {
   if (Number.isInteger(+e.key)) addDigit(e.key);
   switch (e.key) {
     case "Delete":
+      runFunction("clear");
+      break;
+    case "F5":
       runFunction("clear");
       break;
     case "/":

@@ -75,6 +75,10 @@ function operateFloats(a, operator, b) {
 );
 
 function addDigit(digit) {
+  if (isError(display.textContent.length === 15)) return;
+  if (!(secondOperand ?? false) & !preOperator)
+    // After running equals
+    return;
   if (isNewNumber) {
     display.textContent = "";
     startNewNumber();
@@ -148,6 +152,7 @@ function runEquals() {
   if (isError(!Number.isFinite(result))) return;
 
   firstOperand = result;
+  isNewNumber = true;
   display.textContent = formatResult(result);
 }
 
@@ -160,16 +165,8 @@ function getNumberOfDecimals(number) {
 function formatResult(result) {
   let resultString = result.toString();
   let resultLength = resultString.length;
-
-  if (resultLength > 7) {
-    result = +result.toPrecision(7);
-  }
-
-  if (!Number.isInteger(result)) {
-    let decimalPlaces = getNumberOfDecimals(resultString);
-    if (decimalPlaces > 6) {
-      result = result.toFixed(6);
-    }
+  if (resultLength > 14) {
+    result = result.toExponential(2);
   }
 
   return result;

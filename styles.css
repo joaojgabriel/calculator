@@ -33,6 +33,15 @@ main {
 .function,
 .digit {
   cursor: pointer;
+  border: 0.5px solid;
+}
+
+.digit {
+  border-color: var(--gray-80);
+}
+
+.function {
+  border-color: var(--gray-60);
 }
 
 #calculator {

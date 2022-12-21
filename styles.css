@@ -40,11 +40,29 @@ main {
   flex-direction: column;
   background-color: var(--gray-70);
   border: 1.5px solid var(--gray-60);
-  border-radius: 10px;
+  --radius: 10px;
+  --space: 10px;
+  padding: var(--space);
+  border-radius: calc(var(--radius) + var(--space));
   aspect-ratio: 3/4;
   width: 80%;
   max-width: 250px;
-  padding: 10px;
+}
+
+#clear {
+  border-top-left-radius: var(--radius);
+}
+
+#subtract {
+  border-top-right-radius: var(--radius);
+}
+
+#equals {
+  border-bottom-right-radius: var(--radius);
+}
+
+#zero {
+  border-bottom-left-radius: var(--radius);
 }
 
 button {
@@ -64,7 +82,7 @@ button {
   display: flex;
   align-items: center;
   padding-left: 10px;
-  border-radius: 10px;
+  border-radius: var(--radius);
   font-size: 22px;
   background-color: var(--gray-90);
   color: var(--gray-20);
@@ -112,3 +130,4 @@ button {
 #right > * {
   flex: 1;
 }
+

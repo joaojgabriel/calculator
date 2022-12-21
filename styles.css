@@ -41,7 +41,7 @@ main {
   background-color: var(--gray-70);
   border: 1.5px solid var(--gray-60);
   --radius: 10px;
-  --space: 10px;
+  --space: 15px;
   padding: var(--space);
   border-radius: calc(var(--radius) + var(--space));
   aspect-ratio: 3/4;

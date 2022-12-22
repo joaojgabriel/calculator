@@ -12,7 +12,6 @@ let firstOperand;
 let preOperator;
 let operator;
 let secondOperand;
-let repeatedOperand;
 let decimalPoint = false;
 let isNewNumber = true;
 
@@ -182,7 +181,6 @@ function resetCalculator() {
   preOperator = null;
   operator = null;
   secondOperand = null;
-  repeatedOperand = null;
   decimalPoint = false;
   isNewNumber = true;
   removeHighlight();

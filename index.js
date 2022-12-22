@@ -189,9 +189,9 @@ function resetCalculator() {
 }
 
 function runEquals() {
-  if (!operator) return;
-
-  if (isError(operator === "divide" && secondOperand === 0)) return;
+  if (!operator || isError(operator === "divide" && secondOperand === 0)) {
+    return;
+  }
 
   let result;
 

@@ -134,11 +134,12 @@ function addDigit(digit) {
 }
 
 function removeDigit() {
-  if (output.textContent === "") return;
-  if (output.textContent[output.textContent.length - 1] === ".") {
+  let displayedText = output.textContent;
+  if (displayedText === "") return;
+  if (displayedText[displayedText.length - 1] === ".") {
     decimalPoint = false;
   }
-  output.textContent = output.textContent.slice(0, -1);
+  output.textContent = displayedText.slice(0, -1);
   assignToOperand(+output.textContent);
 }
 

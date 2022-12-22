@@ -13,7 +13,7 @@ let preOperator;
 let operator;
 let secondOperand;
 let decimalPoint = false;
-let isNewNumber = true;
+let nextDigitStartsNum = true;
 
 addEventListener("keydown", (e) => {
   if (
@@ -125,7 +125,7 @@ function operateFloats(a, operator, b) {
 );
 
 function addDigit(digit) {
-  if (isNewNumber) {
+  if (nextDigitStartsNum) {
     output.textContent = "";
     startNewNumber();
   }
@@ -146,7 +146,7 @@ function removeDigit() {
 function startNewNumber() {
   operator = preOperator;
   preOperator = null;
-  isNewNumber = false;
+  nextDigitStartsNum = false;
   decimalPoint = false;
 }
 
@@ -183,7 +183,7 @@ function resetCalculator() {
   operator = null;
   secondOperand = null;
   decimalPoint = false;
-  isNewNumber = true;
+  nextDigitStartsNum = true;
   removeHighlight();
   output.textContent = "";
 }
@@ -207,7 +207,7 @@ function runEquals() {
   if (isError(!Number.isFinite(result))) return;
 
   firstOperand = result;
-  isNewNumber = true;
+  nextDigitStartsNum = true;
   removeHighlight();
   output.textContent = formatResult(result);
   isError(isOverflowing());
@@ -258,7 +258,7 @@ function runOperator(selectedOperator) {
   if (secondOperand || secondOperand === 0) runEquals();
   preOperator = selectedOperator;
   highlightPreOperator(preOperator);
-  isNewNumber = true;
+  nextDigitStartsNum = true;
 }
 
 function highlightPreOperator(preOperator) {
@@ -275,10 +275,10 @@ function removeHighlight() {
 }
 
 function runDecimalPoint() {
-  if (decimalPoint & !isNewNumber) return;
-  if (isNewNumber) {
+  if (decimalPoint & !nextDigitStartsNum) return;
+  if (nextDigitStartsNum) {
     output.textContent = "0";
-    isNewNumber = false;
+    nextDigitStartsNum = false;
   }
   output.textContent += ".";
   decimalPoint = true;

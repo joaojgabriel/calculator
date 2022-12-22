@@ -114,7 +114,7 @@ function operateFloats(a, operator, b) {
       a = multiply(a, b);
   }
 
-  if (!(operator === "divide")) {
+  if (operator !== divide) {
     b = decimalOffset;
   }
   return divide(a, b);

@@ -127,7 +127,9 @@ function operateFloats(a, operator, b) {
 function addDigit(digit) {
   if (nextDigitStartsNum) {
     output.textContent = "";
-    startNewNumber();
+    nextDigitStartsNum = false;
+    decimalPoint = false;
+    commitOperator();
   }
   output.textContent += digit;
   assignToOperand(+output.textContent);
@@ -143,11 +145,9 @@ function removeDigit() {
   assignToOperand(+output.textContent);
 }
 
-function startNewNumber() {
+function commitOperator() {
   operator = preOperator;
   preOperator = null;
-  nextDigitStartsNum = false;
-  decimalPoint = false;
 }
 
 function assignToOperand(number) {
@@ -276,7 +276,12 @@ function removeHighlight() {
 
 function runDecimalPoint() {
   if (decimalPoint & !nextDigitStartsNum) return;
+
+  decimalPoint = true;
+
   if (nextDigitStartsNum) {
+    // if after equals, reset
+    if (operator) resetCalculator();
     output.textContent = "0";
     nextDigitStartsNum = false;
   }

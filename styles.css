@@ -11,11 +11,12 @@
   --blue-40v: #2491ff;
   --orange-warm-40v: #ff580a;
   --gray-50: #757575;
+  --green-cool-50v: #008817;
   --gray-60: #5c5c5c;
+  --orange-warm-60v: #a72f10;
   --gray-70: #454545;
   --gray-80: #2e2e2e;
   --gray-90: #1b1b1b;
-  --other: #008817;
 }
 
 * {
@@ -106,7 +107,7 @@ button {
   border-radius: var(--radius);
   font-size: 45px;
   background-color: var(--gray-90);
-  color: var(--other);
+  color: var(--green-cool-50v);
   height: 65px;
   width: 100%;
   overflow-x: auto;
@@ -171,4 +172,21 @@ button {
 
 .active-operator {
   background-color: var(--orange-warm-40v);
+}
+
+.digit:active,
+#dot:active {
+  box-shadow: inset 1.5px 1.5px 1px var(--gray-80),
+    inset -0.5px -0.5px 1px var(--gray-80);
+}
+
+.function:active {
+  box-shadow: inset 1.5px 1.5px 1px black,
+    inset -0.5px -0.5px 1px black;
+}
+
+.active-operator:active,
+#equals:active {
+  box-shadow: inset 1.5px 1.5px 1px var(--orange-warm-60v),
+    inset -0.5px -0.5px 1px var(--orange-warm-60v);
 }

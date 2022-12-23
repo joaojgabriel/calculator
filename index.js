@@ -196,9 +196,12 @@ function runEquals() {
   let result;
 
   if (secondOperand || secondOperand === 0) {
-    Number.isInteger(firstOperand) && Number.isInteger(secondOperand)
-      ? (result = operateIntegers(firstOperand, operator, secondOperand))
-      : (result = operateFloats(firstOperand, operator, secondOperand));
+    if (Number.isInteger(firstOperand) && Number.isInteger(secondOperand)) {
+      result = operateIntegers(firstOperand, operator, secondOperand);
+    } else {
+      result = operateFloats(firstOperand, operator, secondOperand);
+    }
+
     secondOperand = null;
   } else {
     return;

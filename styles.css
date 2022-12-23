@@ -15,6 +15,7 @@
   --gray-60: #5c5c5c;
   --orange-warm-60v: #a72f10;
   --gray-70: #454545;
+  --blue-70v: #0b4778;
   --gray-80: #2e2e2e;
   --gray-90: #1b1b1b;
   box-sizing: border-box;
@@ -178,12 +179,16 @@ button {
 }
 
 .function:active {
-  box-shadow: inset 1.5px 1.5px 1px black,
-    inset -0.5px -0.5px 1px black;
+  box-shadow: inset 1.5px 1.5px 1px black, inset -0.5px -0.5px 1px black;
 }
 
 .active-operator:active,
 #equals:active {
   box-shadow: inset 1.5px 1.5px 1px var(--orange-warm-60v),
     inset -0.5px -0.5px 1px var(--orange-warm-60v);
+}
+
+#clear:active {
+  box-shadow: inset 1.5px 1.5px 1px var(--blue-70v),
+    inset -0.5px -0.5px 1px var(--blue-70v);
 }

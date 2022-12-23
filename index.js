@@ -284,6 +284,7 @@ function runDecimalPoint() {
     if (operator) resetCalculator();
     output.textContent = "0";
     nextDigitStartsNum = false;
+    assignToOperand(0);
   }
   output.textContent += ".";
   decimalPoint = true;

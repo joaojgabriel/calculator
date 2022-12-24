@@ -54,6 +54,7 @@ main {
 #calculator {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   background-color: var(--gray-70);
   border: 1.5px solid var(--gray-60);
   --radius: 10px;
@@ -107,7 +108,6 @@ button {
   background-color: var(--gray-90);
   color: var(--green-cool-50v);
   height: 65px;
-  width: 100%;
   overflow-x: auto;
 }
 

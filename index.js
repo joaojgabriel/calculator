@@ -125,6 +125,12 @@ function operateFloats(a, operator, b) {
 );
 
 function addDigit(digit) {
+  if (!firstOperand && firstOperand !== 0) {
+    isNegative = preOperator === "subtract";
+    resetCalculator();
+    nextDigitStartsNum = false;
+    if (isNegative) output.textContent = "-";
+  }
   if (nextDigitStartsNum) {
     output.textContent = "";
     nextDigitStartsNum = false;

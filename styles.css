@@ -31,8 +31,8 @@ body {
 }
 
 main {
-  height: 100vh;
-  width: 100%;
+  block-size: 100vh;
+  inline-size: 100%;
   display: grid;
   place-items: center;
 }
@@ -61,28 +61,27 @@ main {
   --space: 15px;
   padding: var(--space);
   border-radius: calc(var(--radius) + var(--space));
-  aspect-ratio: 3/4;
-  width: 80%;
-  max-width: 300px;
+  block-size: min(100vmin, 400px);
+  inline-size: min(80vmax, 300px);
 }
 
 #clear {
-  border-top-left-radius: var(--radius);
+  border-start-start-radius: var(--radius);
   color: var(--gray-05);
   background-color: var(--blue-40v);
 }
 
 #backspace {
-  border-top-right-radius: var(--radius);
+  border-start-end-radius: var(--radius);
 }
 
 #equals {
-  border-bottom-right-radius: var(--radius);
+  border-end-end-radius: var(--radius);
   background-color: var(--orange-warm-40v);
 }
 
 #zero {
-  border-bottom-left-radius: var(--radius);
+  border-end-start-radius: var(--radius);
 }
 
 button {
@@ -102,18 +101,18 @@ button {
   font-family: Digital, Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding-inline-start: 10px;
   border-radius: var(--radius);
   font-size: 45px;
   background-color: var(--gray-90);
   color: var(--green-cool-50v);
-  height: 65px;
+  block-size: 65px;
   overflow-x: auto;
 }
 
 #buttons {
   flex: 1;
-  margin-top: 10px;
+  margin-block-start: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -130,7 +129,7 @@ button {
 }
 
 #top > * {
-  flex: 1;
+  flex: 1 1 auto;
 }
 
 #digits {
@@ -154,6 +153,12 @@ button {
   display: flex;
   flex-direction: column;
   grid-row: span 4;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    writing-mode: vertical-rl;
+  }
 }
 
 #right > * {

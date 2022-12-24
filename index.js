@@ -293,6 +293,7 @@ function runDecimalPoint() {
     if (operator) resetCalculator();
     output.textContent = "0";
     nextDigitStartsNum = false;
+    commitOperator();
     assignToOperand(0);
   }
   output.textContent += ".";

@@ -95,6 +95,7 @@ button {
 }
 
 #display {
+  flex: 2;
   font-family: Digital, Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
@@ -103,12 +104,11 @@ button {
   font-size: 4.5rem;
   background-color: var(--display-glass);
   color: var(--display-txt-color);
-  block-size: 6.5rem;
   overflow-x: auto;
 }
 
 #buttons {
-  flex: 1;
+  flex: 8;
   margin-block-start: 1rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

@@ -1,23 +1,15 @@
 :root {
-  --gray-01: #fcfcfc;
-  --gray-02: #f9f9f9;
-  --gray-03: #f6f6f6;
-  --gray-04: #f3f3f3;
-  --gray-05: #f0f0f0;
-  --gray-10: #e6e6e6;
-  --gray-20: #c9c9c9;
-  --gray-30: #adadad;
-  --gray-40: #919191;
-  --blue-40v: #2491ff;
-  --orange-warm-40v: #ff580a;
-  --gray-50: #757575;
-  --green-cool-50v: #008817;
-  --gray-60: #5c5c5c;
-  --orange-warm-60v: #a72f10;
-  --gray-70: #454545;
-  --blue-70v: #0b4778;
-  --gray-80: #2e2e2e;
-  --gray-90: #1b1b1b;
+  --base-color: #2e2e2e;
+  --lighter-base: #5c5c5c;
+  --calculator-color: #454545;
+  --display-glass: #1b1b1b;
+  --display-txt-color: #008817;
+  --clear-bg: #2491ff;
+  --clear-text-color: #f0f0f0;
+  --button-text-color: #e6e6e6;
+  --accent-color: #ff580a;
+  --accent-shadow: #a72f10;
+  --function-shadow: black;
   box-sizing: border-box;
 }
 
@@ -27,7 +19,7 @@
 }
 
 body {
-  background-color: var(--gray-80);
+  background-color: var(--base-color);
 }
 
 main {
@@ -44,19 +36,19 @@ main {
 }
 
 .digit {
-  border-color: var(--gray-80);
+  border-color: var(--base-color);
 }
 
 .function {
-  border-color: var(--gray-60);
+  border-color: var(--lighter-base);
 }
 
 #calculator {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background-color: var(--gray-70);
-  border: 1.5px solid var(--gray-60);
+  background-color: var(--calculator-color);
+  border: 1.5px solid var(--lighter-base);
   --radius: 10px;
   --space: 15px;
   padding: var(--space);
@@ -67,8 +59,7 @@ main {
 
 #clear {
   border-start-start-radius: var(--radius);
-  color: var(--gray-05);
-  background-color: var(--blue-40v);
+  background-color: var(--clear-bg);
 }
 
 #backspace {
@@ -77,7 +68,7 @@ main {
 
 #equals {
   border-end-end-radius: var(--radius);
-  background-color: var(--orange-warm-40v);
+  background-color: var(--accent-color);
 }
 
 #zero {
@@ -85,16 +76,16 @@ main {
 }
 
 button {
-  color: var(--gray-10);
+  color: var(--button-text-color);
   border: none;
 }
 
 .digit {
-  background-color: var(--gray-60);
+  background-color: var(--lighter-base);
 }
 
 .function {
-  background-color: var(--gray-80);
+  background-color: var(--base-color);
 }
 
 #display {
@@ -104,8 +95,8 @@ button {
   padding-inline-start: 10px;
   border-radius: var(--radius);
   font-size: 45px;
-  background-color: var(--gray-90);
-  color: var(--green-cool-50v);
+  background-color: var(--display-glass);
+  color: var(--display-txt-color);
   block-size: 65px;
   overflow-x: auto;
 }
@@ -145,8 +136,8 @@ button {
 }
 
 #dot {
-  background-color: var(--gray-60);
-  border-color: var(--gray-80);
+  background-color: var(--lighter-base);
+  border-color: var(--base-color);
 }
 
 #right {
@@ -174,26 +165,27 @@ button {
 }
 
 .active-operator {
-  background-color: var(--orange-warm-40v);
+  background-color: var(--accent-color);
 }
 
 .digit:active,
 #dot:active {
-  box-shadow: inset 1.5px 1.5px 1px var(--gray-80),
-    inset -0.5px -0.5px 1px var(--gray-80);
+  box-shadow: inset 1.5px 1.5px 1px var(--base-color),
+    inset -0.5px -0.5px 1px var(--base-color);
 }
 
 .function:active {
-  box-shadow: inset 1.5px 1.5px 1px black, inset -0.5px -0.5px 1px black;
+  box-shadow: inset 1.5px 1.5px 1px var(--function-shadow),
+    inset -0.5px -0.5px 1px var(--function-shadow);
 }
 
 .active-operator:active,
 #equals:active {
-  box-shadow: inset 1.5px 1.5px 1px var(--orange-warm-60v),
-    inset -0.5px -0.5px 1px var(--orange-warm-60v);
+  box-shadow: inset 1.5px 1.5px 1px var(--accent-shadow),
+    inset -0.5px -0.5px 1px var(--accent-shadow);
 }
 
 #clear:active {
-  box-shadow: inset 1.5px 1.5px 1px var(--blue-70v),
-    inset -0.5px -0.5px 1px var(--blue-70v);
+  box-shadow: inset 1.5px 1.5px 1px var(--clear-shadow),
+    inset -0.5px -0.5px 1px var(--clear-shadow);
 }

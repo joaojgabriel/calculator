@@ -11,6 +11,7 @@
   --accent-shadow: #a72f10;
   --function-shadow: black;
   box-sizing: border-box;
+  font-size: 1rem;
 }
 
 @font-face {
@@ -31,12 +32,13 @@ body {
   background-color: var(--base-color);
   display: grid;
   place-items: center;
+  font-size: 1.6rem;
 }
 
 .function,
 .digit {
   cursor: pointer;
-  border: 0.5px solid;
+  border: 0.05rem solid;
 }
 
 .digit {
@@ -52,13 +54,13 @@ body {
   flex-direction: column;
   align-items: stretch;
   background-color: var(--calculator-color);
-  border: 1.5px solid var(--lighter-base);
-  --radius: 10px;
-  --space: 15px;
+  border: 0.15rem solid var(--lighter-base);
+  --radius: 1rem;
+  --space: 1.5rem;
   padding: var(--space);
   border-radius: calc(var(--radius) + var(--space));
-  block-size: min(100vmin, 400px);
-  inline-size: min(80vmax, 300px);
+  block-size: min(100vmin, 28rem);
+  inline-size: min(80vmax, 21rem);
 }
 
 #clear {
@@ -96,18 +98,18 @@ button {
   font-family: Digital, Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
-  padding-inline-start: 10px;
+  padding-inline-start: 1rem;
   border-radius: var(--radius);
-  font-size: 45px;
+  font-size: 4.5rem;
   background-color: var(--display-glass);
   color: var(--display-txt-color);
-  block-size: 65px;
+  block-size: 6.5rem;
   overflow-x: auto;
 }
 
 #buttons {
   flex: 1;
-  margin-block-start: 10px;
+  margin-block-start: 1rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -115,7 +117,7 @@ button {
 
 #buttons * {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 #top {
@@ -150,7 +152,7 @@ button {
   grid-row: span 4;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 50rem) {
   body {
     writing-mode: vertical-rl;
   }
@@ -174,22 +176,22 @@ button {
 
 .digit:active,
 #dot:active {
-  box-shadow: inset 1.5px 1.5px 1px var(--base-color),
-    inset -0.5px -0.5px 1px var(--base-color);
+  box-shadow: inset 0.15rem 0.15rem 0.1rem var(--base-color),
+    inset -0.05rem -0.05rem 0.1rem var(--base-color);
 }
 
 .function:active {
-  box-shadow: inset 1.5px 1.5px 1px var(--function-shadow),
-    inset -0.5px -0.5px 1px var(--function-shadow);
+  box-shadow: inset 0.15rem 0.15rem 0.1rem var(--function-shadow),
+    inset -0.05rem -0.05rem 0.1rem var(--function-shadow);
 }
 
 .active-operator:active,
 #equals:active {
-  box-shadow: inset 1.5px 1.5px 1px var(--accent-shadow),
-    inset -0.5px -0.5px 1px var(--accent-shadow);
+  box-shadow: inset 0.15rem 0.15rem 0.1rem var(--accent-shadow),
+    inset -0.05rem -0.05rem 0.1rem var(--accent-shadow);
 }
 
 #clear:active {
-  box-shadow: inset 1.5px 1.5px 1px var(--clear-shadow),
-    inset -0.5px -0.5px 1px var(--clear-shadow);
+  box-shadow: inset 0.15rem 0.15rem 0.1rem var(--clear-shadow),
+    inset -0.05rem -0.05rem 0.1rem var(--clear-shadow);
 }
